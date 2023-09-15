@@ -1,6 +1,7 @@
 let usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
 let usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
-const pos = 0
+let pos = 0
+
 
 function validar(user, pass) {
     for (const i of usuarios) {

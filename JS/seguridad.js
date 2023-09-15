@@ -7,11 +7,11 @@ const eliminarCuenta = document.querySelector('#eliminarCuenta')
 
 class EditDatos {
     constructor(newName, newLastName, newMail, newGender, newJob) {
-        this.newName = newName;
-        this.newLastName = newLastName;
-        this.newMail = newMail;
-        this.newGender = newGender;
-        this.newJob = newJob;
+        this.nombre = newName;
+        this.apellido = newLastName;
+        this.correo = newMail;
+        this.genero = newGender;
+        this.trabajo = newJob;
     }
 }
 
@@ -92,6 +92,15 @@ modificarDatos.onclick = () => {
         usuarios.splice(pos, 1, usuarioActivo)
         localStorage.setItem('usuarios', JSON.stringify(usuarios))
         sessionStorage.setItem('usuarioActivo', JSON.stringify(nuevosDatos))
+
+
+        datosUsuario.innerHTML = ""
+        titulo.innerHTML= ""
+        iHtml("h1", titulo, `¡Bienvenido ${usuarioActivo.nombre}!`)
+        iHtml("p", datosUsuario, `${usuarioActivo.nombre} ${usuarioActivo.apellido}`)
+        iHtml("p", datosUsuario, `${usuarioActivo.correo}`)
+        iHtml('p', datosUsuario, `Genero: ${gender}`)
+        iHtml('p', datosUsuario, `Profesión: ${usrJob}`)
     }
 
 

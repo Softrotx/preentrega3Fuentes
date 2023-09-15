@@ -13,7 +13,7 @@ login.onsubmit = e => {
     const pass = inputpass.value
 
     
-    const usuario = validar(email, pass)
+    let usuario = validar(email, pass)
     
     if (usuario){
         sessionStorage.setItem('usuarioActivo', JSON.stringify(usuario))
