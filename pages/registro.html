@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../JS/funciones.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+
+<body class="index">
+    <main>
+
+        <div class="formulario registro">
+            <h1>Registro</h1>
+            <form id="regUsr" class="formusr">
+                <input id="registroName" type="text" placeholder="Nombre"><img class="posNeg" src="" alt="">
+                <input id="registroLast" type="text" placeholder="Apellido"><img class="posNeg" src="" alt="">
+                <input id="registroCorreo" type="email" placeholder="Ingrese su email"><img id="statusEmail" class="posNeg" src="" alt="">
+                <input id="registroCorreoConfirm" type="email" placeholder="confirme correo"><img class="posNeg" src=""
+                    alt="" id="imgEmailConfirm">
+                <input id="registroPass" type="password" placeholder="Contraseña"><img class="posNeg" src="" alt=""
+                    id="imgPass">
+                <input id="registroPassConfirm" type="password" placeholder="Confirmar contraseña"><img class="posNeg"
+                    src="" alt="" id="imgPassConfirm">
+                <input id="btnReg" type="submit" value="Registrar" class="btnLoginRegistro">
+            </form>
+            <a href="../index.html">volver al inicio</a>
+        </div>
+    </main>
+    
+    <script src="../JS/registrar.js"></script>
+    
+
+</body>
+
+</html>

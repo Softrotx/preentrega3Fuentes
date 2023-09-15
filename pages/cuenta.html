@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../JS/funciones.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+
+<body class="pagCuentas">
+    <h1 id="mainCuenta">
+    </h1>
+    <main>
+        
+        <div class="ventana">
+            <div class="menu" id="menuCuentas">
+                <ul class="nav flex-column nav-underline">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Cuenta</a>
+                    </li>
+                </ul>
+                <ul class="nav flex-column nav-underline">
+                    <li class="nav-item ">
+                        <a id="cerrarSesion" class="nav-link active" aria-current="page" href="#">Cerrar Sesión</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="ventanaUser">
+                <div class="avatarFlex">
+                    <img src="../medios/avatar.png" alt="">
+                    <div id="datosUser">
+                    </div>
+    
+    
+                </div>
+                <div class="userSeguridad">
+                    <h2>Seguridad</h2>
+                    <div class="btnSeguridad">
+                        <button id="modificarDatos">Modificar Datos</button>
+                        <button id="cambiarPass">Cambiar contraseña</button>
+                        <button id="eliminarCuenta">eliminar cuenta</button>
+                    </div>
+                    
+
+                    
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </main>
+    
+    <script src="../JS/cuenta.js"></script>
+    <script src="../JS/seguridad.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  margin-bottom: 0;
+  background-color: #01050D;
+  background-image: url("../medios/backgroundLogin.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+html .index {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+html .index .formulario {
+  color: white;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.9);
+  background-image: url("../medios/transparente.png");
+  background-position: center;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
+  padding: 0px 25px 20px 15px;
+  width: 300px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px 10px 10px 10px;
+}
+html .index .formulario a {
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.9);
+  text-decoration: none;
+  color: azure;
+  width: 40%;
+}
+html .index .formulario .formusr {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+html .index .formulario .formusr .posNeg {
+  width: 20px;
+}
+html .index .formulario .formusr input {
+  width: 85%;
+  height: 20px;
+  margin: 2px;
+}
+html .index .formulario .formusr .btnLoginRegistro {
+  width: 100px;
+  margin-top: 20px;
+  font-size: 1rem;
+  height: 25px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+html .index .registro {
+  width: 300px;
+  height: 370px;
+}
+
+.swal2-center {
+  position: fixed;
+}
+
+.pagCuentas {
+  padding: 30px 40px;
+  font-size: 1rem;
+  color: white;
+  background-color: transparent;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pagCuentas h1 {
+  width: 100%;
+  margin-bottom: 50px;
+}
+.pagCuentas main {
+  width: 90%;
+}
+.pagCuentas .ventana {
+  display: flex;
+  background-size: cover;
+}
+.pagCuentas .ventana .menu {
+  height: 500px;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.pagCuentas .ventana .menu a {
+  color: white;
+}
+.pagCuentas .ventana .menu button {
+  font-size: 1rem;
+  width: 15px;
+}
+.pagCuentas .ventana .menu li {
+  list-style: none;
+}
+.pagCuentas .ventana .ventanaUser {
+  padding: 25px;
+  border-radius: 30px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 550px;
+  background-image: url(../medios/transparente.png);
+  background-position: center;
+  background-size: cover;
+}
+.pagCuentas .ventana .ventanaUser img {
+  width: 150px;
+  height: 150px;
+  margin-right: 25px;
+}
+.pagCuentas .ventana .ventanaUser .avatarFlex {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-bottom: 30px;
+  border-bottom: 1px solid;
+}
+.pagCuentas .ventana .ventanaUser .avatarFlex div {
+  display: flex;
+  flex-direction: column;
+}
+.pagCuentas .ventana .ventanaUser .avatarFlex div input {
+  border-radius: 5px;
+  border: none;
+  margin: 2px;
+}
+.pagCuentas .ventana .ventanaUser .userSeguridad {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.pagCuentas .ventana .ventanaUser .userSeguridad h2 {
+  margin-top: 20px;
+}
+.pagCuentas .ventana .ventanaUser .userSeguridad .btnSeguridad {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+.pagCuentas .ventana .ventanaUser .userSeguridad .btnSeguridad button {
+  width: 60%;
+  margin: 2px;
+}
+
+/*# sourceMappingURL=style.css.map */
