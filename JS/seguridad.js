@@ -54,20 +54,28 @@ modificarDatos.onclick = () => {
 
     const botonGuardar = document.createElement('button')
     botonGuardar.setAttribute('id', 'btnGuardar')
+    botonGuardar.setAttribute('type', 'submit')
     botonGuardar.innerText = 'Guardar'
     newForm.appendChild(botonGuardar)
-    const guardar = document.querySelector('#btnGuardar')
+    
+    const newInputName = document.querySelector('#newName')
+    const newInputLastName = document.querySelector('#newLastName')
+    const newInputMail = document.querySelector('#newMail')
+    const newInputGender = document.getElementById('newGender')
+    const newInputJob = document.getElementById('newJob')
 
 
 
 
+    newForm.onsubmit = e => {
+        e.preventDefault()
 
-    guardar.onclick = () => {
-        const newName = document.querySelector('#newName')
-        const newLastName = document.querySelector('#newLastName')
-        const newMail = document.querySelector('#newMail')
-        const newGender = document.getElementById('newGender')
-        const newJob = document.getElementById('newJob')
+        const newName = newInputName.value
+        const newLastName = newInputLastName.value
+        const newMail = newInputMail.value
+        const newGender = newInputGender.value
+        const newJob = newInputJob.value
+
         
 
         const nuevosDatos = new EditDatos(newName, newLastName, newMail, newGender, newJob)
