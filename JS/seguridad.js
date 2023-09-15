@@ -71,15 +71,24 @@ modificarDatos.onclick = () => {
         e.preventDefault()
 
         const newName = newInputName.value
+        console.log(newName)
         const newLastName = newInputLastName.value
+        console.log(newLastName)
         const newMail = newInputMail.value
+        console.log(newMail)
         const newGender = newInputGender.value
+        console.log(newGender)
         const newJob = newInputJob.value
+        console.log(newJob)
 
         
 
         const nuevosDatos = new EditDatos(newName, newLastName, newMail, newGender, newJob)
+        console.log(nuevosDatos)
+        console.log(usuarioActivo)
+        console.log(usuarios)
         const pos = usuarios.indexOf(usuarioActivo)
+        console.log(pos)
         usuarios.splice(pos, 1, nuevosDatos)
         localStorage.setItem('usuarios', JSON.stringify(usuarios))
         sessionStorage.setItem('usuarioActivo', JSON.stringify(nuevosDatos))

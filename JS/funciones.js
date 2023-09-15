@@ -63,7 +63,7 @@ function guardarUsuario(usuario) {
 }
 
 function uActivo() {
-    const usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
+    
     if (usuarioActivo) {
         validar(usuarioActivo.correo, usuarioActivo.pass)
         location.href = "/pages/cuenta.html"
@@ -71,7 +71,7 @@ function uActivo() {
 
 }
 function ucuenta() {
-    const usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
+    
     if (usuarioActivo) {
         validar(usuarioActivo.correo, usuarioActivo.pass)
 
