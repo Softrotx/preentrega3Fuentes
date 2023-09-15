@@ -87,9 +87,9 @@ modificarDatos.onclick = () => {
         console.log(nuevosDatos)
         console.log(usuarioActivo)
         console.log(usuarios)
-        const pos = usuarios.indexOf(usuarioActivo)
         console.log(pos)
-        usuarios.splice(pos, 1, nuevosDatos)
+        Object.assign(usuarioActivo, nuevosDatos)
+        usuarios.splice(pos, 1, usuarioActivo)
         localStorage.setItem('usuarios', JSON.stringify(usuarios))
         sessionStorage.setItem('usuarioActivo', JSON.stringify(nuevosDatos))
     }
