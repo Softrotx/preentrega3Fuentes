@@ -132,11 +132,11 @@ html .index .registro {
   padding-bottom: 30px;
   border-bottom: 1px solid;
 }
-.pagCuentas .ventana .ventanaUser .avatarFlex div {
+.pagCuentas .ventana .ventanaUser .avatarFlex #modDatos {
   display: flex;
   flex-direction: column;
 }
-.pagCuentas .ventana .ventanaUser .avatarFlex div input {
+.pagCuentas .ventana .ventanaUser .avatarFlex #modDatos input {
   border-radius: 5px;
   border: none;
   margin: 2px;
