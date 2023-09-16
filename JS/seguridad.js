@@ -57,7 +57,7 @@ modificarDatos.onclick = () => {
     botonGuardar.setAttribute('type', 'submit')
     botonGuardar.innerText = 'Guardar'
     newForm.appendChild(botonGuardar)
-    
+
     const newInputName = document.querySelector('#newName')
     const newInputLastName = document.querySelector('#newLastName')
     const newInputMail = document.querySelector('#newMail')
@@ -81,31 +81,54 @@ modificarDatos.onclick = () => {
         const newJob = newInputJob.value
         console.log(newJob)
 
-        
 
-        const nuevosDatos = new EditDatos(newName, newLastName, newMail, newGender, newJob)
+
+        let nuevosDatos = new EditDatos(newName, newLastName, newMail, newGender, newJob)
         console.log(nuevosDatos)
         console.log(usuarioActivo)
         console.log(usuarios)
         console.log(pos)
         Object.assign(usuarioActivo, nuevosDatos)
-        usuarios.splice(pos, 1, usuarioActivo)
+        console.log(usuarioActivo)
+        console.log(usuarios)
+
+        Object.assign(usuarios[pos], usuarioActivo)
         localStorage.setItem('usuarios', JSON.stringify(usuarios))
-        sessionStorage.setItem('usuarioActivo', JSON.stringify(nuevosDatos))
+        sessionStorage.setItem('usuarioActivo', JSON.stringify(usuarioActivo))
 
 
         datosUsuario.innerHTML = ""
-        titulo.innerHTML= ""
-        iHtml("h1", titulo, `¡Bienvenido ${usuarioActivo.nombre}!`)
-        iHtml("p", datosUsuario, `${usuarioActivo.nombre} ${usuarioActivo.apellido}`)
-        iHtml("p", datosUsuario, `${usuarioActivo.correo}`)
-        iHtml('p', datosUsuario, `Genero: ${gender}`)
-        iHtml('p', datosUsuario, `Profesión: ${usrJob}`)
+        titulo.innerHTML = ""
+        usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
+        activarDatos()
     }
 
 
 
 
+
+
+}
+
+eliminarCuenta.onclick = e => {
+    Swal.fire({
+        title: '¿Está seguro de que quiere eliminar su cuenta?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Cancelar',
+        denyButtonText: `Eliminar`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire('Evitaste la eliminacion de la cuenta!')
+
+        } else if (result.isDenied) {
+          Swal.fire('se procederá a eliminar la cuenta')
+          usuarios.splice(pos, 1)
+          localStorage.setItem('usuarios', JSON.stringify(usuarios))
+          cierre()
+        }
+      })
 
 
 }

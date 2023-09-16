@@ -6,7 +6,6 @@ let pos = 0
 function validar(user, pass) {
     for (const i of usuarios) {
         if (user === i.correo && pass === i.password) {
-            pos = usuarios.indexOf(i)
             return i;
         }
 
@@ -66,7 +65,7 @@ function guardarUsuario(usuario) {
 }
 
 function uActivo() {
-    
+    let usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
     if (usuarioActivo) {
         validar(usuarioActivo.correo, usuarioActivo.pass)
         location.href = "/pages/cuenta.html"
@@ -74,7 +73,7 @@ function uActivo() {
 
 }
 function ucuenta() {
-    
+    let usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
     if (usuarioActivo) {
         validar(usuarioActivo.correo, usuarioActivo.pass)
 
