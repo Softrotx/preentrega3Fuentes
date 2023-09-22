@@ -88,11 +88,11 @@ modificarDatos.onclick = () => {
         console.log(usuarioActivo)
         console.log(usuarios)
         console.log(pos)
-        Object.assign(usuarioActivo, nuevosDatos)
+        Object.assign(usuarioActivo, nuevosDatos[0])
         console.log(usuarioActivo)
         console.log(usuarios)
 
-        Object.assign(usuarios[pos], usuarioActivo)
+        Object.assign(usuarios[pos], usuarioActivo[0])
         localStorage.setItem('usuarios', JSON.stringify(usuarios))
         sessionStorage.setItem('usuarioActivo', JSON.stringify(usuarioActivo))
 
