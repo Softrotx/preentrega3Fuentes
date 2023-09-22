@@ -2,8 +2,10 @@ let usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
 let usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
 let pos = 0
 
-
+/* FUNCIONES DE LOGIN */
 function validar(user, pass) {
+    console.log(user + " " +pass)
+    console.log(usuarios)
     for (const i of usuarios) {
         if (user === i.correo && pass === i.password) {
             return i;
@@ -13,7 +15,19 @@ function validar(user, pass) {
     return false;
 }
 
+function uActivo() {
+    
+    if (usuarioActivo) {
+        validar(usuarioActivo.correo, usuarioActivo.pass)
+        location.href = "/pages/cuenta.html"
+    }
 
+}
+/* FIN DE FUNCIONES DE LOGIN */
+
+/* INICIO DE FUNCIONES DE REGISTRO DE USUARIO */
+
+/* valida si el correo esta duplicado en el registro */
 function duplicado(user) {
     for (const i of usuarios) {
         if (user === i.correo) {
@@ -26,6 +40,9 @@ function duplicado(user) {
     return true
 }
 
+
+
+/* valida si la confirmacion del correo es igual al primer correo */
 function confirmarMail(email1, email2) {
     if (email1 === email2) {
         console.log(email1 + " " + email2)
@@ -36,44 +53,51 @@ function confirmarMail(email1, email2) {
     return false
     }
 }
-
+/* valida si las 2 contraseñas son iguales */
 function confirmarPass(pass1, pass2) {
     if (pass1 === pass2) {
         positive(statusPassConfirm)
+        console.log(pass1 + " " + pass2)
         return true
 
     } else { negative(statusPassConfirm)
-    return false
+        console.log(pass1 + " " + pass2)
+        return false
+    }
+}
+/* funcion de seguridad de contraseña */
+function esContrasenaSegura(password) {
+    if (password.length < 8){
+        negative(statusPass)
+        console.log(password.length)
+        return false
+    }else{
+        positive(statusPass)
+        console.log(password.length)
+        return true
     }
 }
 
-function esContrasenaSegura(password) {
-    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&]).{8,}$/.test(password);
-}
-
+/* agrega icono de confirmacion en la pagina de registro */
 function positive(item){
     item.setAttribute('src', '../medios/icons/positive.svg') 
 }
+
+/* agrega icono negativo en la pagina de registro */
 function negative (item){
     item.setAttribute('src', '../medios/icons/negative.svg') 
 }
 
+/* guarda el listado de usuarios en localStorage */
 function guardarUsuario(usuario) {
     usuarios.push(usuario)
     localStorage.setItem('usuarios', JSON.stringify(usuarios))
     console.log(usuarios)
 }
 
-function uActivo() {
-    let usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
-    if (usuarioActivo) {
-        validar(usuarioActivo.correo, usuarioActivo.pass)
-        location.href = "/pages/cuenta.html"
-    }
 
-}
 function ucuenta() {
-    let usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
+    usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
     if (usuarioActivo) {
         validar(usuarioActivo.correo, usuarioActivo.pass)
 

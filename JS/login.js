@@ -14,6 +14,7 @@ login.onsubmit = e => {
 
 
     let usuario = validar(email, pass)
+    console.log(usuario)
 
     if (usuario) {
         sessionStorage.setItem('usuarioActivo', JSON.stringify(usuario))

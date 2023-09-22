@@ -25,6 +25,55 @@ const regPassconfirm = document.getElementById('registroPassConfirm')
 const statusPassConfirm = document.querySelector('#imgPassConfirm')
 
 
+regMail.onchange = e => {
+    if (!duplicado(regMail.value)) {
+        Swal.fire({
+            heightAuto: false,
+            icon: 'error',
+            title: `el correo ${regMail.value} ya existe`,
+            text: 'intente con otro correo o puede volver al login',
+            footer: '<a href="../index.html">volver al login principal</a>'
+        })
+        regMail.value = ""
+    }
+}
+// Valida si el correo y la repeticion son correctas
+regMailConfirm.onchange = e => {
+    if (!confirmarMail(regMail.value, regMailConfirm.value)) {
+        Swal.fire({
+            heightAuto: false,
+            icon: 'error',
+            title: `el correo no coincide`,
+        })
+        regMailConfirm.value = ""
+    }
+}
+
+
+regPass.onchange = e => {
+    if (esContrasenaSegura(regPass.value)) {
+    } else {
+        Swal.fire({
+            heightAuto: false,
+            icon: 'error',
+            title: `Contraseña poco segura`,
+            text: 'la contraseña debe contener al menos 8 caracteres',
+        })
+    }
+}
+
+regPassconfirm.onchange = e => {
+    if (!confirmarPass(regPass.value, regPassconfirm.value)) {
+        Swal.fire({
+            heightAuto: false,
+            icon: 'error',
+            title: `Contraseñas diferentes`,
+            text: 'Las contraseñas no son iguales, favor corregir',
+        })
+        regPassconfirm.value = ""
+
+    }
+}
 
 
 registro.onsubmit = e => {
@@ -40,57 +89,25 @@ registro.onsubmit = e => {
 
 
     // si hay algun campo en blanco el boton de registro no funciona
-    if (!(regName?.value && regLastName?.value && regMail?.value && regMailConfirm?.value && regPassconfirm?.value)) {
-
-        // Valida si el correo y la repeticion son correctas
-    } else if (!confirmarMail(email, emailConfirm)) {
-        alert("el email no corresponde a la confirmacion , favor corregir")
-
-        // Valida si el correo no existe en la base de datos (localStorage)
-    } else if (!duplicado(regMail.value)) {
-        Swal.fire({
-            heightAuto: false,
-            icon: 'error',
-            title: `el correo ${regMail.value} ya existe`,
-            text: 'intente con otro correo o puede volver al login',
-            footer: '<a href="/index.html">volver al login principal</a>'
-        })
-        // valida si la contraseña es segura
-    } else if (!esContrasenaSegura(pass)) {
-        negative(statusPass)
-        Swal.fire({
-            heightAuto: false,
-            icon: 'error',
-            title: `Contraseña poco segura`,
-            text: 'la contraseña debe contener al menos 6 caracteres , un numero y uno de estos simbolos : $ @ $ ! % * ? & ',
-
-        })
-    } else if(!confirmarPass(pass, passConfirm)){
-        positive(statusPass)
-        Swal.fire({
-            heightAuto: false,
-            icon: 'error',
-            title: `Contraseñas diferentes`,
-            text: 'Las contraseñas no son iguales, favor corregir',
-
-        })
-        
-
-    } else{
+    if ((regName?.value && regLastName?.value && regMail?.value && regMailConfirm?.value && regPassconfirm?.value)) {
         positive(statusPass)
         const user = new UserPass(name, lastName, email, pass)
         guardarUsuario(user)
-        Swal.fire(
-            '¡Cuenta creada con exito!',
-            'haz clic para continuar',
-            'success'
-          )
+        Swal.fire({
+            heightAuto: false,
+            icon: 'success',
+            title: '¡Cuenta creada con exito!',
+            text: 'haz clic para continuar',
+            
+        })
+        registro.reset()
+        registro.src = ""
 
 
 
     }
-    
-    
+
+
 
 
 
