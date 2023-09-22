@@ -1,6 +1,4 @@
-// array de usuarios
-
-
+/* array de usuarios en ./funciones.js */
 
 /* valida si hay un usuario logueado activo */
 ucuenta()
@@ -28,4 +26,5 @@ console.log(endSesion)
 
 /* Boton para cerrar sesion . no permite ingresar nuevamente a la pagina de cuenta sin hacer login */
 endSesion.onclick = () =>{cierre();}
+
 

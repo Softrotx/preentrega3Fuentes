@@ -3,7 +3,7 @@ const modificarDatos = document.querySelector('#modificarDatos')
 const cambiarPass = document.querySelector('#cambiarPass')
 const eliminarCuenta = document.querySelector('#eliminarCuenta')
 
-
+console.log(pos)
 
 class EditDatos {
     constructor(newName, newLastName, newMail, newGender, newJob) {

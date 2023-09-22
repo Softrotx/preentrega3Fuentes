@@ -1,6 +1,6 @@
 let usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
 let usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
-let pos = 0
+let pos = usuarios.indexOf(usuarioActivo[0])
 
 /* FUNCIONES DE LOGIN */
 function validar(user, pass) {
@@ -19,7 +19,7 @@ function uActivo() {
     
     if (usuarioActivo) {
         validar(usuarioActivo.correo, usuarioActivo.pass)
-        location.href = "/pages/cuenta.html"
+        location.href = "./pages/cuenta.html"
     }
 
 }
@@ -102,7 +102,7 @@ function ucuenta() {
         validar(usuarioActivo.correo, usuarioActivo.pass)
 
     } else {
-        location.href = "/index.html"
+        location.href = "../index.html"
     }
 
 
