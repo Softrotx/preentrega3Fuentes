@@ -1,14 +1,14 @@
 let usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
 let usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
-let pos = usuarios.indexOf(usuarioActivo[0])
 
 /* FUNCIONES DE LOGIN */
 function validar(user, pass) {
-    console.log(user + " " +pass)
     console.log(usuarios)
     for (const i of usuarios) {
         if (user === i.correo && pass === i.password) {
-            return i;
+            const pos = usuarios.indexOf(i)
+            console.log(pos)
+            return [i, pos];
         }
 
     }
@@ -16,9 +16,9 @@ function validar(user, pass) {
 }
 
 function uActivo() {
-    
+
     if (usuarioActivo) {
-        validar(usuarioActivo.correo, usuarioActivo.pass)
+        validar(usuarioActivo[0].correo, usuarioActivo[0].pass)
         location.href = "./pages/cuenta.html"
     }
 
@@ -49,8 +49,9 @@ function confirmarMail(email1, email2) {
         positive(statusEmailConfirm)
         return true
 
-    } else { negative(statusPassConfirm)
-    return false
+    } else {
+        negative(statusPassConfirm)
+        return false
     }
 }
 /* valida si las 2 contraseñas son iguales */
@@ -60,18 +61,19 @@ function confirmarPass(pass1, pass2) {
         console.log(pass1 + " " + pass2)
         return true
 
-    } else { negative(statusPassConfirm)
+    } else {
+        negative(statusPassConfirm)
         console.log(pass1 + " " + pass2)
         return false
     }
 }
 /* funcion de seguridad de contraseña */
 function esContrasenaSegura(password) {
-    if (password.length < 8){
+    if (password.length < 8) {
         negative(statusPass)
         console.log(password.length)
         return false
-    }else{
+    } else {
         positive(statusPass)
         console.log(password.length)
         return true
@@ -79,13 +81,13 @@ function esContrasenaSegura(password) {
 }
 
 /* agrega icono de confirmacion en la pagina de registro */
-function positive(item){
-    item.setAttribute('src', '../medios/icons/positive.svg') 
+function positive(item) {
+    item.setAttribute('src', '../medios/icons/positive.svg')
 }
 
 /* agrega icono negativo en la pagina de registro */
-function negative (item){
-    item.setAttribute('src', '../medios/icons/negative.svg') 
+function negative(item) {
+    item.setAttribute('src', '../medios/icons/negative.svg')
 }
 
 /* guarda el listado de usuarios en localStorage */
@@ -97,9 +99,9 @@ function guardarUsuario(usuario) {
 
 
 function ucuenta() {
-    usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
+    let usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo'))
     if (usuarioActivo) {
-        validar(usuarioActivo.correo, usuarioActivo.pass)
+        validar(usuarioActivo[0].correo, usuarioActivo[0].pass)
 
     } else {
         location.href = "../index.html"
@@ -110,7 +112,6 @@ function ucuenta() {
 function iHtml(etiqueta, padre, info) {
     const ietiqueta = document.createElement(`${etiqueta}`)
     ietiqueta.innerHTML = info
-    console.log(datosUsuario)
     padre.appendChild(ietiqueta);
 }
 
@@ -119,3 +120,4 @@ function cierre() {
     ucuenta()
 }
 
+/* imagen de avatar */

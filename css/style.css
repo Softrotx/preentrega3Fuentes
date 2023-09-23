@@ -124,6 +124,7 @@ html .index .registro {
   width: 150px;
   height: 150px;
   margin-right: 25px;
+  border-radius: 50%;
 }
 .pagCuentas .ventana .ventanaUser .avatarFlex {
   display: flex;

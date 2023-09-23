@@ -11,10 +11,12 @@ login.onsubmit = e => {
     e.preventDefault()
     const email = inputemail.value
     const pass = inputpass.value
+    
 
 
     let usuario = validar(email, pass)
     console.log(usuario)
+    
 
     if (usuario) {
         sessionStorage.setItem('usuarioActivo', JSON.stringify(usuario))
@@ -27,8 +29,8 @@ login.onsubmit = e => {
         title: 'usuario o contraseña incorrecto',
         text: 'ingrese nuevamente',
     })
-    pos = usuarios.indexOf(usuario)
-    console.log(pos)
+    
+    
 
 }
 
