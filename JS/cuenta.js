@@ -13,7 +13,11 @@ let usrJob = usuarioActivo[0]?.trabajo ?? "Sin definir"
 const fotoAvatar = document.querySelector('#ImgAvatar')
 activarDatos() /* LINE : 15 */
 
-fotoAvatar.setAttribute('src', `https://ui-avatars.com/api/?name=${usuarioActivo[0].nombre}+${usuarioActivo[0].apellido}&background=random&bold=true`)
+if (usuarioActivo[0].avatar){
+    fotoAvatar.setAttribute('src', `${usuarioActivo[0].avatar}`)
+}else{
+    fotoAvatar.setAttribute('src', `https://ui-avatars.com/api/?name=${usuarioActivo[0].nombre}+${usuarioActivo[0].apellido}&background=random&bold=true`)
+}
 
 
 

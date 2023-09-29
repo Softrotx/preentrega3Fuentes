@@ -128,35 +128,53 @@ cambiarPass.onclick = async e => {
       autocorrect: 'off'
     }
   })
-  if(password.length < 8){
+  if (password.length < 8) {
     Swal.fire({
       heightAuto: false,
       icon: 'error',
       title: `Contraseña poco segura`,
       text: 'la contraseña debe contener al menos 8 caracteres',
-  })
+    })
 
-  }else if (!password === password2) {
+  } else if (!password === password2) {
 
     Swal.fire({
       heightAuto: false,
       icon: 'error',
       title: `Las contraseñas deben ser iguales`,
       text: 'Intentelo nuevamente',
-  })
-  }else{
+    })
+  } else {
     Swal.fire({
       heightAuto: false,
       icon: 'success',
       title: '¡Contraseña actualizada!',
-      text: 'se procede a cerrar la sesión',   
-  })
-  let nuevaPassword = {password: password}
+      html: 'La sesion se cerrará en <strong></strong> segundos.',
+      timer: 10000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('strong')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft() / 1000
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    })
+    let nuevaPassword = { password: password }
     Object.assign(usuarios[usuarioActivo[1]], nuevaPassword)
     localStorage.setItem('usuarios', JSON.stringify(usuarios))
     sessionStorage.setItem('usuarioActivo', JSON.stringify([usuarios[usuarioActivo[1]], usuarioActivo[1]]))
-  cierre()
-  
+    setTimeout(() => {
+
+      cierre()
+
+    }, 10000);
+
+
+
   }
 
 }
@@ -176,10 +194,30 @@ eliminarCuenta.onclick = e => {
       Swal.fire('Evitaste la eliminacion de la cuenta!')
 
     } else if (result.isDenied) {
-      Swal.fire('se procederá a eliminar la cuenta')
-      usuarios.splice(usuarioActivo[1], 1)
-      localStorage.setItem('usuarios', JSON.stringify(usuarios))
-      cierre()
+      Swal.fire({
+        heightAuto: false,
+        icon: 'warning',
+        title: 'Se procede a eliminar la cuenta',
+        html: 'la cuenta será eliminada en <strong></strong> segundos.',
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading()
+          const b = Swal.getHtmlContainer().querySelector('strong')
+          timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft() / 1000
+          }, 100)
+        },
+        willClose: () => {
+          clearInterval(timerInterval)
+        }
+      }).then(() => {
+        usuarios.splice(usuarioActivo[1], 1)
+        localStorage.setItem('usuarios', JSON.stringify(usuarios))
+        
+        cierre()
+      })
+
     }
   })
 

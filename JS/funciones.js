@@ -1,5 +1,10 @@
 let usuarios = JSON.parse(localStorage.getItem('usuarios')) || []
 let usuarioActivo = JSON.parse(sessionStorage.getItem('usuarioActivo')) || false
+let usuariosDB = []
+
+/* fetch */
+fetch ('../usuariosdb/usuarios.json').then((response) => response.json().then((json) => usuarios.push(...json)))
+
 
 /* FUNCIONES DE LOGIN */
 function validar(user, pass) {
@@ -12,6 +17,14 @@ function validar(user, pass) {
         }
 
     }
+/*     for (const e of usuariosDB) {
+        if (user === e.correo && pass === e.password) {
+            const pos = usuariosDB.indexOf(e)
+            console.log(pos)
+            return [e, pos];
+        }
+
+    } */
     return false;
 }
 
@@ -121,3 +134,17 @@ function cierre() {
 }
 
 /* imagen de avatar */
+
+
+
+/*  */
+
+/* timer */
+function timer(tiempo) {
+    while (tiempo > 0 ){
+        setTimeout(() => {
+            tiempo -= 1
+        }, 1000);
+        
+    }
+}
